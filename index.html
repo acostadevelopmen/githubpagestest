@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuckyDraw - Juegos de Suerte y Sorteos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="background-animation"></div>
+    
+    <header class="main-header">
+        <div class="logo-container">
+            <i class="fas fa-dice logo-icon"></i>
+            <h1 class="logo-text">Lucky<span>Draw</span></h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-section="home">Inicio</a></li>
+                <li><a href="#" class="nav-link" data-section="games">Juegos</a></li>
+                <li><a href="#" class="nav-link" data-section="history">Historial</a></li>
+                <li><a href="#" class="nav-link" data-section="about">Acerca de</a></li>
+            </ul>
+        </nav>
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="section active-section">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2 class="hero-title animate__animated animate__fadeInDown">¡Toma decisiones con suerte!</h2>
+                    <p class="hero-subtitle animate__animated animate__fadeInUp">Deja que el azar decida por ti con nuestros divertidos juegos de suerte y sorteos.</p>
+                    <button class="cta-button animate__animated animate__pulse animate__infinite">¡Empieza a jugar!</button>
+                </div>
+                <div class="hero-image">
+                    <img src="https://png.pngtree.com/png-vector/20231102/ourmid/pngtree-cartoon-christmas-lucky-roulette-png-image_10361453.png" alt="Ilustración de juegos de suerte" class="animate__animated animate__zoomIn">
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3>Aleatoriedad</h3>
+                    <p>Resultados completamente aleatorios y justos</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Diversión</h3>
+                    <p>Múltiples juegos para todas las ocasiones</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsivo</h3>
+                    <p>Funciona perfecto en cualquier dispositivo</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="games" class="section">
+            <h2 class="section-title">Nuestros Juegos de Suerte</h2>
+            
+            <div class="game-tabs">
+                <button class="game-tab active" data-tab="random-number">Número Aleatorio</button>
+                <button class="game-tab" data-tab="coin-flip">Lanzar Moneda</button>
+                <button class="game-tab" data-tab="decision-maker">Tomar Decisión</button>
+                <button class="game-tab" data-tab="name-picker">Sorteo de Nombres</button>
+                <button class="game-tab" data-tab="lottery">Lotería</button>
+                <button class="game-tab" data-tab="wheel">Ruleta</button>
+            </div>
+
+            <div class="game-content">
+                <!-- Random Number Generator -->
+                <div id="random-number" class="game-panel active">
+                    <div class="game-container">
+                        <h3>Generador de Números Aleatorios</h3>
+                        <div class="input-group">
+                            <label for="min">Desde:</label>
+                            <input type="number" id="min" value="1" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label for="max">Hasta:</label>
+                            <input type="number" id="max" value="100" min="1">
+                        </div>
+                        <div class="input-group">
+                            <label for="quantity">Cantidad:</label>
+                            <input type="number" id="quantity" value="1" min="1" max="10">
+                        </div>
+                        <button class="game-button" id="generate-number">Generar Número(s)</button>
+                        <div class="result-container">
+                            <h4>Resultado:</h4>
+                            <div id="randomNumberResult" class="result-display"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coin Flip -->
+                <div id="coin-flip" class="game-panel">
+                    <div class="game-container">
+                        <h3>Lanzar Moneda</h3>
+                        <div class="coin-container">
+                            <div class="coin" id="coin">
+                                <div class="coin-front">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="coin-back">
+                                    <i class="fas fa-euro-sign"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="game-button" id="flip-coin">Lanzar Moneda</button>
+                        <div class="result-container">
+                            <h4>Resultado:</h4>
+                            <div id="coinResult" class="result-display"></div>
+                            <div class="stats">
+                                <p>Caras: <span id="heads-count">0</span></p>
+                                <p>Cruces: <span id="tails-count">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decision Maker -->
+                <div id="decision-maker" class="game-panel">
+                    <div class="game-container">
+                        <h3>Tomador de Decisiones</h3>
+                        <div class="input-group">
+                            <label for="options">Opciones (una por línea):</label>
+                            <textarea id="options" rows="5" placeholder="Ejemplo:&#10;Ir al cine&#10;Quedarse en casa&#10;Salir a comer"></textarea>
+                        </div>
+                        <button class="game-button" id="make-decision">Decide por mí</button>
+                        <div class="result-container">
+                            <h4>La decisión es:</h4>
+                            <div id="decisionResult" class="result-display big-result"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name Picker -->
+                <div id="name-picker" class="game-panel">
+                    <div class="game-container">
+                        <h3>Sorteo de Nombres</h3>
+                        <div class="input-group">
+                            <label for="names">Nombres (uno por línea):</label>
+                            <textarea id="names" rows="5" placeholder="Ejemplo:&#10;Juan&#10;María&#10;Carlos&#10;Ana"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="winners">Número de ganadores:</label>
+                            <input type="number" id="winners" value="1" min="1">
+                        </div>
+                        <button class="game-button" id="pick-names">Seleccionar Ganador(es)</button>
+                        <div class="result-container">
+                            <h4>Ganador(es):</h4>
+                            <div id="nameResult" class="result-display"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lottery -->
+                <div id="lottery" class="game-panel">
+                    <div class="game-container">
+                        <h3>Generador de Lotería</h3>
+                        <div class="lottery-options">
+                            <div class="lottery-type active" data-type="standard">
+                                <i class="fas fa-ticket"></i>
+                                <span>Estándar (6/49)</span>
+                            </div>
+                            <div class="lottery-type" data-type="powerball">
+                                <i class="fas fa-bolt"></i>
+                                <span>Powerball</span>
+                            </div>
+                            <div class="lottery-type" data-type="euromillions">
+                                <i class="fas fa-star"></i>
+                                <span>Euromillones</span>
+                            </div>
+                            <div class="lottery-type" data-type="custom">
+                                <i class="fas fa-cog"></i>
+                                <span>Personalizado</span>
+                            </div>
+                        </div>
+                        
+                        <div class="custom-options" style="display: none;">
+                            <div class="input-group">
+                                <label for="custom-numbers">Números a elegir:</label>
+                                <input type="number" id="custom-numbers" value="6" min="1">
+                            </div>
+                            <div class="input-group">
+                                <label for="custom-range">Rango (1 a ...):</label>
+                                <input type="number" id="custom-range" value="49" min="1">
+                            </div>
+                            <div class="input-group">
+                                <label for="custom-special">Números especiales:</label>
+                                <input type="number" id="custom-special" value="0" min="0">
+                            </div>
+                        </div>
+                        
+                        <button class="game-button" id="generate-lottery">Generar Combinación</button>
+                        <div class="result-container">
+                            <h4>Tu combinación:</h4>
+                            <div id="lotteryResult" class="lottery-numbers"></div>
+                            <div id="specialNumbers" class="special-numbers"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wheel -->
+                <div id="wheel" class="game-panel">
+                    <div class="game-container">
+                        <h3>Ruleta de la Suerte</h3>
+                        <div class="wheel-container">
+                            <canvas id="wheelCanvas" width="400" height="400"></canvas>
+                            <div class="wheel-center"></div>
+                            <div class="wheel-pointer"></div>
+                        </div>
+                        <div class="input-group">
+                            <label for="wheel-options">Opciones de la ruleta (una por línea):</label>
+                            <textarea id="wheel-options" rows="3" placeholder="Ejemplo:&#10;Premio 1&#10;Premio 2&#10;Premio 3"></textarea>
+                        </div>
+                        <div class="wheel-controls">
+                            <button class="game-button" id="setup-wheel">Configurar Ruleta</button>
+                            <button class="game-button spin-button" id="spin-wheel">Girar Ruleta</button>
+                        </div>
+                        <div class="result-container">
+                            <h4>Resultado:</h4>
+                            <div id="wheelResult" class="result-display big-result"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="section">
+            <h2 class="section-title">Historial de Resultados</h2>
+            <div class="history-container">
+                <div class="history-tabs">
+                    <button class="history-tab active" data-history="all">Todos</button>
+                    <button class="history-tab" data-history="numbers">Números</button>
+                    <button class="history-tab" data-history="coins">Monedas</button>
+                    <button class="history-tab" data-history="decisions">Decisiones</button>
+                    <button class="history-tab" data-history="lotteries">Loterías</button>
+                </div>
+                <div class="history-content">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Juego</th>
+                                <th>Resultado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-items">
+                            <!-- Los elementos del historial se añadirán dinámicamente -->
+                        </tbody>
+                    </table>
+                    <div class="no-history" id="no-history">
+                        <i class="fas fa-history"></i>
+                        <p>Aún no hay resultados en el historial</p>
+                    </div>
+                </div>
+                <div class="history-actions">
+                    <button class="action-button" id="clear-history">
+                        <i class="fas fa-trash"></i> Limpiar Historial
+                    </button>
+                    <button class="action-button" id="export-history">
+                        <i class="fas fa-download"></i> Exportar Historial
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <h2 class="section-title">Acerca de LuckyDraw</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3><i class="fas fa-info-circle"></i> ¿Qué es LuckyDraw?</h3>
+                    <p>LuckyDraw es una plataforma de juegos de suerte y sorteos diseñada para ayudarte a tomar decisiones de manera divertida y aleatoria. Perfecta para sorteos, juegos entre amigos o cuando no puedes decidirte.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-code"></i> Tecnologías</h3>
+                    <p>Esta aplicación está construida con HTML5, CSS3 y JavaScript puro, sin dependencias externas (excepto Font Awesome para los iconos). Es compatible con todos los navegadores modernos.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-lock"></i> Privacidad</h3>
+                    <p>Todos los sorteos y resultados se generan localmente en tu navegador. No almacenamos tus datos en ningún servidor externo, garantizando tu privacidad.</p>
+                </div>
+                <div class="about-card">
+                    <h3><i class="fas fa-random"></i> Aleatoriedad</h3>
+                    <p>Utilizamos el algoritmo <strong>Math.random()</strong> de JavaScript para generar resultados verdaderamente aleatorios. Para mayor transparencia, puedes inspeccionar el código fuente.</p>
+                </div>
+            </div>
+            <div class="developer-info">
+                <img src="https://cdn-icons-png.flaticon.com/512/4228/4228171.png" alt="Desarrollador" class="developer-photo">
+                <div class="developer-details">
+                    <h3>Desarrollado por Enmanuel Acosta</h3>
+                    <p>Apasionado por crear herramientas divertidas y útiles para la web.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>LuckyDraw</h4>
+                <p>La mejor manera de dejar tus decisiones al azar.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#" data-section="home">Inicio</a></li>
+                    <li><a href="#" data-section="games">Juegos</a></li>
+                    <li><a href="#" data-section="history">Historial</a></li>
+                    <li><a href="#" data-section="about">Acerca de</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p><i class="fas fa-envelope"></i> enmanuelacostarodriguez20@outlook.es</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 LuckyDraw. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="result-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 id="modal-title">Resultado</h3>
+            <div id="modal-content" class="modal-body"></div>
+            <div class="modal-actions">
+                <button class="modal-button" id="share-result">
+                    <i class="fas fa-share-alt"></i> Compartir
+                </button>
+                <button class="modal-button" id="save-result">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
